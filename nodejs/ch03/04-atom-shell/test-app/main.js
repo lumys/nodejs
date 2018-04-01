@@ -1,6 +1,3 @@
-// 위키피디아 페이지를 방문하는 Electron 예제.
-var TARGET_URL = "https://ko.wikipedia.org/";
-
 // module load
 var electron = require('electron');
 var app = electron.app;
@@ -15,5 +12,8 @@ app.on('ready', function() {
 	});
 
 	// 지정 URL 로드.
-	win.loadURL(TARGET_URL);
+	win.loadURL('file://' + __dirname + '/index.html');
+	win.on('closed', function() {
+		win = null;
+	});
 });
